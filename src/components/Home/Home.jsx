@@ -3,6 +3,7 @@ import './home.css';
 import frontImg from '../../crypto.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrencies } from '../../redux/Currencies/currencies';
+import { BsTriangleFill } from 'react-icons/bs';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -56,7 +57,15 @@ export default function Home() {
         <ul className="currencies">
           {currencies.slice(0, 10).map((currency, i) => {
           return (
-            <li className='currency'>{i}</li>
+            <li className='currency' key={currency.name}>
+              <div className="currency-text">
+                <h3>{currency.symbol}</h3>
+                <p>{currency.name}</p>
+              </div>
+              <div className="change-percent">
+                <BsTriangleFill />
+              </div>
+            </li>
           )
         })}
         </ul>
