@@ -3,6 +3,7 @@ import './home.css';
 import frontImg from '../../crypto.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrencies } from '../../redux/Currencies/currencies';
+import { BsTriangleFill, BsArrowRightCircle } from 'react-icons/bs';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -16,6 +17,15 @@ export default function Home() {
     return (
       <h1>LOADING...</h1>
     )
+  }
+
+  function getBackgroundColor(i) {
+    if (i % 2 === 0 && i !== 2 && i !== 6) {
+      return 'dark-bg';
+    } else if (i === 3 || i === 7) {
+      return 'dark-bg';
+    }
+    return 'light-bg';
   }
 
   return (
@@ -40,25 +50,57 @@ export default function Home() {
         <ul className="stats">
           <li className='stat'>
             <h3>1000+</h3>
-            <p>Cryptocurrencies</p>
+            <p>Crypto - currencies</p>
           </li>
           <li className='stat'>
             <h3>100 Mil+</h3>
-            <p>Supply</p>
+            <p>Coins Supply</p>
           </li>
-          <li className='stat'>Stat 3</li>
-          <li className='stat'>Stat 4</li>
-          <li className='stat light-bg'>Stat 5</li>
-          <li className='stat dark-bg'>Stat 6</li>
+          <li className='stat'>
+            <h3>1 Mil+</h3>
+            <p>History trades</p>
+          </li>
+          <li className='stat'>
+            <h3>1000+</h3>
+            <p>Markets per coin</p>
+          </li>
+          <li className='stat light-bg'>
+            <h3>1,682</h3>
+            <p>followers</p>
+            <BsArrowRightCircle className='arrow-circle'/>
+          </li>
+          <li className='stat dark-bg'>
+            <h3>58</h3>
+            <p>Hire me</p>
+            <BsArrowRightCircle className='arrow-circle'/>
+          </li>
         </ul>
       </section>
       <section className="currencies-container">
         <ul className="currencies">
           {currencies.slice(0, 10).map((currency, i) => {
           return (
-            <li className='currency'>{i}</li>
-          )
-        })}
+            <li
+              className={`currency ${getBackgroundColor(i)}`}
+              key={currency.name}>
+              <div className="currency-text">
+                <h3>{currency.symbol}</h3>
+                <p>{currency.name}</p>
+              </div>
+              <div className="change-percent">
+                {currency.changePercent24Hr[0] === '-'
+                  ? currency.changePercent24Hr.slice(0, 5)
+                  : currency.changePercent24Hr.slice(0, 4)}%
+                  {' '}
+                  <BsTriangleFill
+                  className={currency.changePercent24Hr[0] !== '-'
+                  ? 'positive-per'
+                  : 'negative-per'
+                }/>
+                <BsArrowRightCircle className='arrow-circle'/>
+              </div>
+            </li>
+          )})}
         </ul>
       </section>
       
