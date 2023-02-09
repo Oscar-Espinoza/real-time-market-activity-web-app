@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './home.css';
 import frontImg from '../../crypto.jpg';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrencies } from '../../redux/Currencies/currencies';
 import { BsTriangleFill, BsArrowRightCircle } from 'react-icons/bs';
@@ -8,6 +9,7 @@ import { BsTriangleFill, BsArrowRightCircle } from 'react-icons/bs';
 export default function Home() {
   const dispatch = useDispatch();
   const { loading, currencies } = useSelector(state => state.currencies);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchCurrencies());
@@ -82,7 +84,9 @@ export default function Home() {
           return (
             <li
               className={`currency ${getBackgroundColor(i)}`}
-              key={currency.name}>
+              key={currency.name}
+              onClick={() => {navigate(`/${currency.name}`)}}
+            >
               <div className="currency-text">
                 <h3>{currency.symbol}</h3>
                 <p>{currency.name}</p>
@@ -90,7 +94,7 @@ export default function Home() {
               <div className="change-percent">
                 {currency.changePercent24Hr[0] === '-'
                   ? currency.changePercent24Hr.slice(0, 5)
-                  : currency.changePercent24Hr.slice(0, 4)}%
+                  : `+ ${currency.changePercent24Hr.slice(0, 4)}`}%
                   {' '}
                   <BsTriangleFill
                   className={currency.changePercent24Hr[0] !== '-'
