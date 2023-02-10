@@ -1,11 +1,3 @@
-.dark-bg {
-  background: #cf3f76;
-}
-
-.light-bg {
-  background: #df4782;
-}
-
 .stats-container {
   font-family: Lato; font-style: normal; font-variant: normal;
 }
@@ -82,6 +74,11 @@ ul {
 }
 
 /* Currencies */
+
+.currencies-container {
+  font-family: Lato;
+  font-style: normal;
+}
 
 .currencies {
   display: flex;

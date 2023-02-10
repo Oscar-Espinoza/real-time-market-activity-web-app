@@ -84,7 +84,7 @@ export default function Home() {
           return (
             <li
               className={`currency ${getBackgroundColor(i)}`}
-              key={currency.name}
+              key={currency.id}
               onClick={() => {navigate(`/${currency.name}`)}}
             >
               <div className="currency-text">
