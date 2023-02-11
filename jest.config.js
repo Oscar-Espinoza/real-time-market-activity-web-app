@@ -1,8 +1,9 @@
 module.exports = {
   moduleNameMapper: {
     '\\.css$': '<rootDir>/__mocks__/styleMock.js',
+    '\\.(jpg|jpeg|png|svg)$': '<rootDir>/__mocks__/fileMock.js',
   },
-  "transform": {
-    "^.+\\.[t|j]sx?$": "babel-jest"
-  }
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+  },
 };
