@@ -10,6 +10,10 @@
   color: #fff
 }
 
+a {
+  text-decoration: none;
+}
+
 .dark-bg {
   background: #cf3f76;
 }
@@ -17,5 +21,3 @@
 .light-bg {
   background: #df4782;
 }
-
-

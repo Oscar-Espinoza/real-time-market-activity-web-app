@@ -1,9 +1,9 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
   loading: false,
-  currencies: []
+  currencies: [],
 };
 
 export const fetchCurrencies = createAsyncThunk('currencies/fetchCurrencies', async () => {
@@ -16,16 +16,11 @@ const currencies = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchCurrencies.pending]: state => {
-      state.loading = true;
-    },
-    [fetchCurrencies.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.currencies = action.payload;
-    },
-    [fetchCurrencies.rejected]: state => {
-      state.loading = false;
-    },
+    [fetchCurrencies.pending]: (state) => ({ ...state, loading: true }),
+    [fetchCurrencies.fulfilled]: (state, action) => (
+      { ...state, loading: false, currencies: action.payload }
+    ),
+    [fetchCurrencies.rejected]: (state) => ({ ...state, loading: false }),
   },
 });
 

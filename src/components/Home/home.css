@@ -88,13 +88,6 @@ ul {
 
 .currency {
   width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 15px 0;
-  text-align: center;
-  position: relative;
-  cursor: pointer;
 }
 
 .currency.pair {
@@ -103,6 +96,18 @@ ul {
 
 .currency.odd {
   background: #df4782;
+}
+
+.currency-link {
+  width: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 0;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
 }
 
 .change-percent {
